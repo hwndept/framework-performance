@@ -1,0 +1,10 @@
+{
+  "name": "frameworks-performance",
+  "version": "1.0.0",
+  "description": "Gather performans metrics from apps written in different frameworks.",
+  "scripts": {
+    "test": "ab -n 2000 -c 100 localhost:3000/"
+  },
+  "author": "Nikolay Shatalov <hwndept@gmail.com>",
+  "license": "ISC"
+}
