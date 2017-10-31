@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "description": "Gather performans metrics from apps written in different frameworks.",
   "scripts": {
-    "test": "ab -n 2000 -c 100 localhost:3000/"
+    "test": "ab -n 2000 -c 100 localhost:3000/",
+    "start:node": "cd app/node && npm run docker:build && npm run docker:run",
+    "start:node-express": "cd app/node-express && npm run docker:build && npm run docker:run",
+    "start:node-nest": "cd app/node-nest && npm run docker:build && npm run docker:run",
+    "stop:node": "cd app/node && npm run docker:stop",
+    "stop:node-express": "cd app/node-express && npm run docker:stop",
+    "stop:node-nest": "cd app/node-nest && npm run docker:stop"
   },
   "author": "Nikolay Shatalov <hwndept@gmail.com>",
   "license": "ISC"
