@@ -1,0 +1,12 @@
+sudo: required
+language: node_js
+services:
+  - docker
+node_js: stable
+env:
+  - npm_package_config_ab_requests=10
+  - npm_package_config_ab_concurrent=5
+before_install:
+  - npm config set frameworks-performance:ab:requests 10
+  - npm config set frameworks-performance:ab:concurrent 5
+script: npm test
