@@ -3,9 +3,21 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "config": {
+    "docker": {
+      "image": "frameworks-performance-app-node-nest",
+      "instance": "frameworks-performance-app-node-nest-instance"
+    }
+  },
   "scripts": {
     "prestart": "tsc",
-    "start": "node dist/app.js"
+    "start": "node dist/app.js",
+    "docker:build": "docker build -t $npm_package_config_docker_image .",
+    "predocker:run": "npm run docker:stop",
+    "docker:run": "docker run -itd --rm -p 3000:3000 --name $npm_package_config_docker_instance $npm_package_config_docker_image",
+    "docker:stop": "docker stop $npm_package_config_docker_instance 2>/dev/null || true",
+    "docker:logs": "docker logs $npm_package_config_docker_instance",
+    "docker:sh": "docker exec -it $npm_package_config_docker_instance sh"
   },
   "dependencies": {
     "@nestjs/common": "^4.0.0",
