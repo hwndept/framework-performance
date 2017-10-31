@@ -17,12 +17,12 @@
     "test:app:node-express": "npm run start:node-express && npm run test:ab && npm run stop:node-express",
     "test:app:node-nest": "npm run start:node-nest && npm run test:ab && npm run stop:node-nest",
     "test:ab": "ab -r -n $npm_package_config_ab_requests -c $npm_package_config_ab_concurrent localhost:$npm_package_config_apps_port/",
-    "start:node": "cd app/node && npm run docker:build && npm run docker:run",
-    "start:node-express": "cd app/node-express && npm run docker:build && npm run docker:run",
-    "start:node-nest": "cd app/node-nest && npm run docker:build && npm run docker:run",
-    "stop:node": "cd app/node && npm run docker:stop",
-    "stop:node-express": "cd app/node-express && npm run docker:stop",
-    "stop:node-nest": "cd app/node-nest && npm run docker:stop"
+    "start:node": "cd app/node && sh start.sh",
+    "start:node-express": "cd app/node-express && sh start.sh",
+    "start:node-nest": "cd app/node-nest && sh start.sh",
+    "stop:node": "cd app/node && sh stop.sh",
+    "stop:node-express": "cd app/node-express && sh stop.sh",
+    "stop:node-nest": "cd app/node-nest && sh stop.sh"
   },
   "author": "Nikolay Shatalov <hwndept@gmail.com>",
   "license": "ISC"
