@@ -1,3 +1,5 @@
+[![build][travis-ci-master-build-icon]][travis-ci-project-url]
+
 # Goal
 
 Gather performans metrics from apps written in different frameworks.
@@ -28,3 +30,7 @@ All apps implements the same API and then app is being tested using `ab` utility
 7. Include app testing by updating `npm test` command
 8. Include app stop command into `npm stop:apps` command - Used to stop all the
   apps in a case when something went wrong.
+
+
+[travis-ci-master-build-icon]: https://travis-ci.org/hwndept/framework-performance.svg?branch=master
+[travis-ci-project-url]: https://travis-ci.org/hwndept/framework-performance
