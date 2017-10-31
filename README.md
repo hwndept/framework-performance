@@ -22,6 +22,9 @@ All apps implements the same API and then app is being tested using `ab` utility
 3. App should provide start.sh script that builds container and run it.
 4. App should provide stop.sh script that stops container.
 5. App should listen for 3000
-5. App should implement basic API:
+6. App should implement basic API:
   + `GET / => 'Hello!'`
   + `GET /:name => 'Hello ${name}'`
+7. Include app testing by updating `npm test` command
+8. Include app stop command into `npm stop:apps` command - Used to stop all the
+  apps in a case when something went wrong.
