@@ -12,17 +12,20 @@
     }
   },
   "scripts": {
-    "test": "npm run test:app:node && npm run test:app:node-express && npm run test:app:node-nest",
+    "test": "npm run test:app:node && npm run test:app:node-express && npm run test:app:node-hapi && npm run test:app:node-nest",
     "test:app:node": "npm run start:node && npm run test:ab && npm run stop:node",
     "test:app:node-express": "npm run start:node-express && npm run test:ab && npm run stop:node-express",
+    "test:app:node-hapi": "npm run start:node-hapi && npm run test:ab && npm run stop:node-hapi",
     "test:app:node-nest": "npm run start:node-nest && npm run test:ab && npm run stop:node-nest",
     "test:ab": "ab -r -n $npm_package_config_ab_requests -c $npm_package_config_ab_concurrent localhost:$npm_package_config_apps_port/",
     "start:node": "cd app/node && sh start.sh",
     "start:node-express": "cd app/node-express && sh start.sh",
+    "start:node-hapi": "cd app/node-hapi && sh start.sh",
     "start:node-nest": "cd app/node-nest && sh start.sh",
-    "stop:apps": "npm run stop:node && npm run stop:node-express && npm run stop:node-nest",
+    "stop:apps": "npm run stop:node && npm run stop:node-express && npm run stop:node-hapi && npm run stop:node-nest",
     "stop:node": "cd app/node && sh stop.sh",
     "stop:node-express": "cd app/node-express && sh stop.sh",
+    "stop:node-hapi": "cd app/node-hapi && sh stop.sh",
     "stop:node-nest": "cd app/node-nest && sh stop.sh"
   },
   "author": "Nikolay Shatalov <hwndept@gmail.com>",

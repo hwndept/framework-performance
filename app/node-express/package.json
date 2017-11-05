@@ -2,7 +2,7 @@
   "name": "node-express",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/app.js",
   "config": {
     "docker": {
       "image": "frameworks-performance-app-node-express",
