@@ -2,7 +2,7 @@
   "name": "node-nest",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/app.js",
   "config": {
     "docker": {
       "image": "frameworks-performance-app-node-nest",
