@@ -1,5 +1,5 @@
 *.log
-
 node_modules/
-
 dist/
+# tmp path for test reports
+scripts/.reports/
