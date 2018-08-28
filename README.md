@@ -1,12 +1,10 @@
 [![build][travis-ci-master-build-icon]][travis-ci-project-url]
 
-# Goal
-
 Gather performans metrics from apps written in different frameworks.
 
 ## Idea
 
-All apps implements the same API and then app is being tested using `ab` utility.
+All apps implements the same API and then app is being tested using [autocannon](https://www.npmjs.com/package/autocannon) utility.
 
 ## Pre-requirements
 
@@ -16,19 +14,20 @@ All apps implements the same API and then app is being tested using `ab` utility
 ## How to use
 
 1. Run `npm test` command
+2. Analyze the output in the [.reports](./scripts/.reports) folder(it will be created as a result of `npm test` task)
 
 ## Requirements for new app
 
 1. App should be placed in `app` folder
 2. App should be containerised
-3. App should provide start.sh script that builds container and run it.
-4. App should provide stop.sh script that stops container.
-5. App should listen for 3000
+3. App should provide `start.sh` script that builds container and runs it.
+4. App should provide `stop.sh` script that stops container.
+5. App should listen to port `3000`
 6. App should implement basic API:
   + `GET / => 'Hello!'`
   + `GET /:name => 'Hello ${name}'`
-7. Include app testing by updating `npm test` command
-8. Include app stop command into `npm stop:apps` command - Used to stop all the
+7. Include app into the test by updating npm `test` command
+8. Include app into the stop command by updating npm `stop-all` command - Used to stop all the
   apps in a case when something went wrong.
 
 
