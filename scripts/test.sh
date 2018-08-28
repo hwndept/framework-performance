@@ -4,36 +4,40 @@ reldir=`dirname $0`
 cd $reldir
 
 scripts_dir=`pwd`
-apps_folder=$scripts_dir/../app
-reports_dir_name=.reports
-reports_dir_path=$scripts_dir/$reports_dir_name
+apps_dir=$scripts_dir/../app
+reports_dir=$scripts_dir/.reports
+autocannon=$scripts_dir/../node_modules/.bin/autocannon
 
-ab_requests=100
-ab_concurrent=10
-apps_port=3000
+test_apps_port=3000
+test_concurrency=$npm_package_config_test_concurrency
+test_duration=$npm_package_config_test_duration
+test_pipelining=$npm_package_config_test_pipelining
+test_report_prefix=$(date +%Y%m%d-%H%M%S)
 
-rm -rf $reports_dir_name
-mkdir -p $reports_dir_name
+mkdir -p $reports_dir
 
-for app_folder_name in `ls $apps_folder`; do
-  echo "running test for \"$app_folder_name\""
+for app_dir_name in `ls $apps_dir`; do
+  echo "running test for \"$app_dir_name\""
 
-  app_folder_path="$apps_folder/$app_folder_name"
+  app_dir="$apps_dir/$app_dir_name"
 
-  cd $app_folder_path
+  cd $app_dir
 
-  sh start.sh
+  sh start.sh > /dev/null
 
-  ab -r \
-    -n $ab_requests \
-    -c $ab_concurrent \
-    "http://localhost:$apps_port/" > "${reports_dir_path}/${app_folder_name}.report"
+  test_report_file="${reports_dir}/${test_report_prefix}-${app_dir_name}.report"
 
-  sh stop.sh
+  eval $autocannon \
+    -c $test_concurrency \
+    -d $test_duration \
+    -p $test_pipelining \
+    "http://localhost:3000/" > $test_report_file 2>&1
+
+  echo "  report file $test_report_file"
+
+  sh stop.sh > /dev/null
 
   cd $scripts_dir
 
   sleep 1
-
-  exit
 done
