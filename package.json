@@ -1,14 +1,12 @@
 {
   "name": "frameworks-performance",
   "version": "1.0.0",
-  "description": "Gather performans metrics from apps written in different frameworks.",
+  "description": "Gather performance metrics from apps written in different frameworks.",
   "config": {
-    "apps": {
-      "port": 3000
-    },
-    "ab": {
-      "requests": 1000,
-      "concurrent": "50" 
+    "test": {
+      "concurrency": 10,
+      "duration": 10,
+      "pipelining": 10
     }
   },
   "scripts": {
@@ -16,5 +14,8 @@
     "stop-all": "scripts/stop-all-apps.sh"
   },
   "author": "Nikolay Shatalov <hwndept@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "autocannon": "^2.4.1"
+  }
 }
