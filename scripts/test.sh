@@ -25,13 +25,14 @@ for app_dir_name in `ls $apps_dir`; do
 
   sh start.sh > /dev/null
 
-  test_report_file="${reports_dir}/${test_report_prefix}-${app_dir_name}.report"
+  test_report_file="${reports_dir}/${test_report_prefix}-${app_dir_name}.json"
 
   eval $autocannon \
     -c $test_concurrency \
     -d $test_duration \
     -p $test_pipelining \
-    "http://localhost:3000/" > $test_report_file 2>&1
+    --json \
+    "http://localhost:3000/" > $test_report_file
 
   echo "  report file $test_report_file"
 
