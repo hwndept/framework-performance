@@ -1,5 +1,7 @@
 const hapi = require('hapi');
 
+const factorial = require('../../../src/node/factorial');
+
 const PORT = process.env.NODE_PORT || 3000;
 
 const server = new hapi.Server();
@@ -28,6 +30,14 @@ server.start((err) => {
     path:'/hello/{name}',
     handler(req, reply) {
       reply(`Hello ${req.params.name}!`);
+    }
+  });
+
+  server.route({
+    method: 'GET',
+    path:'/factorial/{num}',
+    handler(req, reply) {
+      reply(factorial(parseInt(req.params.num)));
     }
   });
 });
