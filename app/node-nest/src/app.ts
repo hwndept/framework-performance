@@ -3,12 +3,12 @@ import { NestFactory } from '@nestjs/core';
 
 @Controller('/')
 export class TestController {
-  @Get('/:name')
+  @Get('/hello/:name')
   helloName(@Req() req) {
     return `Hello ${req.params.name}!`;
   }
 
-  @Get('/')
+  @Get('/hello')
   hello() {
     return 'Hello!';
   }

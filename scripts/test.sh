@@ -32,7 +32,14 @@ for app_dir_name in `ls $apps_dir`; do
     -d $test_duration \
     -p $test_pipelining \
     --json \
-    "http://localhost:3000/" > $test_report_file
+    "http://localhost:3000/hello" > "$test_report_file-1"
+
+  eval $autocannon \
+    -c $test_concurrency \
+    -d $test_duration \
+    -p $test_pipelining \
+    --json \
+    "http://localhost:3000/hello/Username" > "$test_report_file-2"
 
   echo "  report file $test_report_file"
 

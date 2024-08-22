@@ -17,7 +17,7 @@ server.start((err) => {
 
   server.route({
     method: 'GET',
-    path:'/',
+    path:'/hello',
     handler(req, reply) {
       reply('Hello!');
     }
@@ -25,7 +25,7 @@ server.start((err) => {
 
   server.route({
     method: 'GET',
-    path:'/{name}',
+    path:'/hello/{name}',
     handler(req, reply) {
       reply(`Hello ${req.params.name}!`);
     }

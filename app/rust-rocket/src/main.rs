@@ -3,12 +3,12 @@ use std::net::{IpAddr, Ipv4Addr};
 #[macro_use]
 extern crate rocket;
 
-#[get("/")]
+#[get("/hello")]
 fn hello_route() -> &'static str {
     "Hello!"
 }
 
-#[get("/<name>")]
+#[get("/hello/<name>")]
 fn hello_name_route(name: &str) -> String {
     format!("Hello {}!", name)
 }

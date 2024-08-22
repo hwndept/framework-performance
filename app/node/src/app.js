@@ -3,8 +3,8 @@ const http = require('http');
 const PORT = process.env.NODE_PORT || 3000;
 
 const routes = [
-  { url: /^\/$/, handler: (params, res) => res.end('Hello!') },
-  { url: /^\/(.+?)$/, handler: (params, res) => res.end(`Hello ${params[0]}!`) }
+  { url: /^\/hello$/, handler: (params, res) => res.end('Hello!') },
+  { url: /^\/hello\/(.+?)$/, handler: (params, res) => res.end(`Hello ${params[0]}!`) }
 ];
 
 const app = http.createServer((req, res) => {

@@ -1,11 +1,11 @@
 use actix_web::{get, web, App, HttpResponse, HttpServer, Responder};
 
-#[get("/")]
+#[get("/hello")]
 async fn hello_route() -> impl Responder {
     HttpResponse::Ok().body("Hello!")
 }
 
-#[get("/{name}")]
+#[get("/hello/{name}")]
 async fn hello_name_route(path: web::Path<(String,)>) -> impl Responder {
     HttpResponse::Ok().body(format!("Hello {}!", path.into_inner().0))
 }
