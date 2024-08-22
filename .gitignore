@@ -1,6 +1,7 @@
 *.log
 node_modules/
 dist/
+target/
 # tmp path for test reports
 scripts/.reports/
 package-lock.json

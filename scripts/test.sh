@@ -17,7 +17,7 @@ test_report_prefix=$(date +%Y%m%d-%H%M%S)
 mkdir -p $reports_dir
 
 for app_dir_name in `ls $apps_dir`; do
-  echo "running test for \"$app_dir_name\""
+  echo "running test for app: \"$app_dir_name\""
 
   app_dir="$apps_dir/$app_dir_name"
 
