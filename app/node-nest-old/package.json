@@ -1,0 +1,40 @@
+{
+  "name": "node-nest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/app.js",
+  "config": {
+    "docker": {
+      "image": "frameworks-performance-app-node-nest",
+      "instance": "frameworks-performance-app-node-nest-instance"
+    }
+  },
+  "scripts": {
+    "prestart": "tsc",
+    "start": "node dist/app.js",
+    "docker:build": "docker build -t $npm_package_config_docker_image .",
+    "predocker:run": "npm run docker:stop",
+    "docker:run": "docker run -itd --rm -p 3000:3000 --name $npm_package_config_docker_instance $npm_package_config_docker_image",
+    "docker:stop": "docker stop $npm_package_config_docker_instance 2>/dev/null || true",
+    "docker:logs": "docker logs $npm_package_config_docker_instance",
+    "docker:sh": "docker exec -it $npm_package_config_docker_instance sh"
+  },
+  "dependencies": {
+    "@nestjs/common": "^4.0.0",
+    "@nestjs/core": "^4.0.0",
+    "@nestjs/microservices": "^4.0.0",
+    "@nestjs/testing": "^4.0.0",
+    "@nestjs/websockets": "^4.0.0",
+    "redis": "^2.7.1",
+    "reflect-metadata": "^0.1.10",
+    "rxjs": "^5.4.0",
+    "typescript": "^2.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.28",
+    "nodemon": "^1.12.1",
+    "ts-node": "^3.3.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
