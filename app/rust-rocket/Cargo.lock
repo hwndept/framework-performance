@@ -225,6 +225,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "factorial"
+version = "0.1.0"
+
+[[package]]
 name = "fastrand"
 version = "2.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -946,6 +950,7 @@ dependencies = [
 name = "rust-rocket"
 version = "0.1.0"
 dependencies = [
+ "factorial",
  "rocket",
 ]
 

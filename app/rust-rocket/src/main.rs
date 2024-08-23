@@ -1,3 +1,4 @@
+use factorial::factorial;
 use std::net::{IpAddr, Ipv4Addr};
 
 #[macro_use]
@@ -13,6 +14,11 @@ fn hello_name_route(name: &str) -> String {
     format!("Hello {}!", name)
 }
 
+#[get("/factorial/<num>")]
+fn factorial_route(num: u64) -> String {
+    factorial(num).to_string()
+}
+
 #[launch]
 fn rocket() -> _ {
     rocket::build()
@@ -21,5 +27,5 @@ fn rocket() -> _ {
             address: IpAddr::V4(Ipv4Addr::new(0, 0, 0, 0)),
             ..Default::default()
         })
-        .mount("/", routes![hello_route, hello_name_route])
+        .mount("/", routes![hello_route, hello_name_route, factorial_route])
 }
